@@ -1,0 +1,184 @@
+                            ASSIGNMENT - 1
+
+create table salespeople
+(
+snum int(4),
+sname varchar(10),
+city varchar(10),
+comm float(3,2)
+);
+
+insert into salespeople(snum,sname,city,comm)
+values('1002','Serres','Sanjose','0.13');
+
+insert into salespeople(snum,sname,city,comm)
+values('1001','Motika','London','0.11');
+
+insert into salespeople(snum,sname,city,comm)
+values('1007','Rifkin','Barcelona','0.15');
+
+insert into salespeople(snum,sname,city,comm)
+values('1003','Axelrod','Newyork','0.10');
+================================================================
+create table customers
+(
+cnum int(4),
+cname varchar(10),
+city varchar(10),
+Rating int(4),
+snum int(4)
+);
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2001','Hoffman','London','100',1001);
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2002','Giovanni','Rome','200',1003);
+
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2003','Liu','Sanjose','200',1002);
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2004','Grass','Berlin','300',1002);
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2008','Cisneros','Sanjose','300',1007);
+
+insert into customers(cnum,cname,city,Rating,snum)
+values('2007','Pereira','Rome','100',1004);
+==============================================================
+
+create table orders
+(
+Onum int(4),
+Amt float(7,2),
+Odate date,
+Cnum int(4),
+Snum int(4)
+);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3001','18.69','1990-10-03','2008',1007);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3003','767.19','1990-10-03','2001',1001);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3002','1900.10','1990-10-03','2007',1004);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3005','5160.45','1990-10-03','2003',1002);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3006','1098.16','1990-10-03','2008',1007);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3009','1713.23','1990-10-03','2002',1003);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3007','75.75','1990-10-03','2004',1002);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3008','4723.00','1990-10-03','2006',1001);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3010','1309.95','1990-10-03','2004',1002);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3011','18.69','1990-10-03','2006',1001);
+
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3001','9891.88','1990-10-03','2008',1007);
+
+insert into orders(Onum,Amt,Odate,Cnum,snum)
+values('3001','18.69','1990-10-03','2008',1007);
+
+=================================================================================
+                                                     ASSIGNMENT-2
+1)Which field of the customer table is the primary key?
+=>Customer number.
+
+2)What is the 4th column of the customer table?
+=> Rating
+
+3)What is another word for row? for columns?
+=>In DBMS the rows are also known as record and in RDBMS the row is called row,tuples,entity,opportunity.The columns are known as field in DBMS and in RDBMS the column is known as Attribute,column,methods.
+
+
+4)Why isnt it possible to see the first five rows of the table?
+=>Because tuple dont have orders
+====================================================================================
+                                                      ASSIGNMENT-3
+1)Doe ANSI recognize the data type DATE?
+=>yes the ANSI recognizes the data type date.
+
+
+2)Which division of SQL is used to insert values in tables?
+=>DDL(insert into values)
+
+====================================================================================
+                                                      Assignment-4
+
+1)Write a select command that produces the order number,amount and date for all the rows in the order table.
+=>SELECT onum,amt,odate FROM orders;
+
+
+2)Write a query that produces all the rows from the customers table for which the salesapersons number is 1001.
+=>SELECT * FROM customers where snum =1001;
+
+
+3)Write a query that displays salespeople table with the column in the following order,city,sname,snum,comm.
+=>SELECT city,sname,snum,comm, FROM salespeople;
+
+
+4)write a select command that produces the rating followed by the name of each customer in san jose.
+=>SELECT rating ||''|| cname "employee rating" FROM customers WHERE city='sanjose';
+
+
+5)Write a query that will produce the snum values of all salespeople(suppress the duplicates) with orderss in the order table.
+=>SELECT DISTINCT snum,onum,FROM salespeople ORDER BY snum;
+=======================================================================================================================
+                                                     ASSIGNMENT-5
+1)Write a query that will give u all the orders for more than rs 1000.
+=>select * from order where amount >1000;
+
+
+
+2)Write a query that will give you the names and cities of all the salespeople in london with a commision above 0.10.
+=>SELECT sname,city FROM salespeople WHERE city='London' AND comm>.10;
+
+
+
+3)Write a query on customer table whose output will exclude all the customers with a rating <=100, unless they are located in Rome.
+=>SELECT * FROM customers WHERE rating>100 OR city='rome';
+
+
+
+4)what will be the output from the following query?
+SELECT* from orders
+     where(amt<100 OR
+         NOT(odate='1990-10-03'
+            AND cnum>2003));
+=>it will display all the tuple from order except date is 03-oct-1990 with cnum>2003 or orders where amt is less then 1000 or
+
+display all order having amount less then 1000 or having order except on 03-oct-1990 with cnum>2003.
+
+
+
+5)what will be the output from the following query?
+SELECT* from orders
+     where NOT((odate='1990-10-03' OR snum>1006)
+            AND amt>=1500));
+=>
+
+
+6)What is the simpler way to write this query?
+select snum,sname,city,comm from salespeople where(comm>0.12 OR comm<0.14);
+=>SELECT snum,sname,city,comm FROM salespeople WHERE(comm >. SELECT snum,sname,city,comm FROM salespeople WHERE com m=.13;
+
+12
+OR comm <.14);
+=====================================================================================================
+ 
