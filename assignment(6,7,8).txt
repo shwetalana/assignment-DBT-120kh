@@ -1,0 +1,55 @@
+                              ASSIGNMENT NO. 6
+
+1) Write two different queries that would produce all orders taken on October 
+3rd or 4th, 1990. 
+-> 1) select * from orders where odate >= '1990-10-03' and odate <= '1990-10-04';
+   2) select * from orders where odate between '1990-10-03' and '1990-10-04';
+   3) select * from orders where odate IN ('1990-10-03', '1990-10-04');
+
+2) Write a query that selects all of the customers serviced by Peel or Motika. 
+(Hint: the snum field relates the two tables to one another). 
+-> select * from customers where Snum IN (select Snum from salespeople where sname = 'Peel' OR sname = 'Motika'); 
+ 
+3) Write a query that will produce all the customers whose names begin with a 
+letter from ‘A’ to ‘G’. 
+-> 1) select * from customers where cname between 'A' and 'H' AND cname not like 'H%';
+   2) select * from customers where cname >= 'A' and cname < 'H';
+   3) select * from customers where substr(cname,1,1) between 'A' and 'G';
+ 
+4) Write a query that selects all customers whose names begin with the letter ‘C’. 
+-> select * from customers where cname like 'C%';
+ 
+5) Write a query that selects all orders except those with zeroes or NULLs in 
+the amt field.
+-> select * from orders where Amt NOT IN (0, 'NULL');                        
+
+
+
+                            Assignment-7
+
+(1)SELECT count(onum) total_order FROM orders WHERE odate LIKE '03-OCT-%';
+
+(2)SELECT count(cname) empty_city FROM customers WHERE cname IS NOT NULL;
+
+(3)SELECT min(amt) ) "smallest order",cnum FROM orders GROUP BY cnum;
+
+(4)SELECT * FROM customers WHERE cname LIKE 'G%'ORDER BY cname;
+
+(5)SELECT max(rating) "highest rating" FROM customers;
+
+(6)SELECT count(odate)||' SALES PERSON REGISTREDDON' "TOTAL",
+       odate FROM orders GROUP BY odate;
+
+                             Assignment-8
+
+(1)SELECT onum,snum,amt,(amt*12)/100 commision FROM orders;
+
+(2)SELECT onum,snum,amt,(amt*12)/100 commision FROM orders;
+
+(3)SELECT rating,cname,snum FROM customers ORDER BY rating DESC;
+
+(4)SELECT count(odate) "TOTAL ORDERS",odate FROM orders GROUP BY odate ORDER BY "TOTAL ORDERS";
+
+
+                        
+
