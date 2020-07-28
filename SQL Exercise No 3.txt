@@ -1,0 +1,19 @@
+EXERCISE NO 3
+
+1. Display all the Supplier names with the initial letter capital.
+
+Ans--> mysql> select concat(UPPER(SUBSTRING(cname,1,1)),LOWER(SUBSTRING(cname,2)))As cn
+ame from customers;
+
+2. Display all the Supplier names in upper case.
+Ans-->select upper (Cname) from customers;
+
+3. Display all the Supplier names in lower case.
+Ans-->select lower (Cname) from customers;
+
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+Ans-->select rpad(Cname,25,' ' ) from customers;
+
+5.5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+HINT: REPLACE.
+Ans-->select replace(sname,’la’,’ro’)from supplier; 
