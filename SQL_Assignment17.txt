@@ -1,0 +1,47 @@
+Assignment – 17
+Constraining the Values of your data.
+1) Create the Orders table so that all onum values as well as all combinations of
+cnum and snum are different from one another, and so that NULL values are
+excluded from the date field.
+--create table orders_1 ( onum int(10), cnum int(10), sname int(10), odate date NOT NULL, CONSTRAINT pk_1 PRIMARY key(onum,cnum,sname) );
+
+2) Create the Salespeople table so that the default commission is 10% with no
+NULLS permitted, snum is the primary key, and all names fall alphabetically
+between A and M, inclusive (assume all names will be uppercase).
+
+--create table salespeople_1 ( comm int(10) DEFAULT 10, snum int(10) PRIMARY KEY, sname varchar(10) check(substr(upper(sname),1,1) BETWEEN 'A' AND 'M') );
+
+--INSERT INTO salespeople_1
+VALUES (13,
+        10002,
+        'Rakesh');
+
+--INSERT INTO salespeople_1
+VALUES (30,
+        10001,
+        'Shivesh')
+3) Create the Orders table, making sure that the onum is greater than the cnum, and
+the cnum is greater that the snum. Allow no NULLS in any of these three fields
+
+--create table orders_2 ( onum int(10), amt float(7,2), odate date, cnum int(10), snum int(10), CONSTRAINT on_cn_sn check(cnum>cnum  AND cnum>snum) );
+
+--INSERT INTO orders_2
+VALUES(10010,
+       10000,
+       '1990-12-01',
+       10000,
+       10);
+
+INSERT INTO orders_2
+VALUES(10001,
+       2000,
+       '1990-12-02',
+       10,
+       1000);
+
+--INSERT INTO orders_2
+VALUES(10021,
+       2000,
+       '1990-01-02',
+       10,
+       1002) ;
