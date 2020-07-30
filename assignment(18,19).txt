@@ -1,0 +1,59 @@
+                                      Assignment-18
+-- 1 
+drop table CityOrders;
+create table Cityorders as 
+select Onum  , amt , Snum , Cnum , City
+from orderC natural join customers;
+
+alter TABLE cityorders add constraint Onum_fk foreign key (Onum) references orderC(Onum);
+
+--
+
+
+2
+ 
+CREATE TABLE IF NOT EXISTS orderC2(
+Onum INT(4),
+Amt FLOAT(7,2),
+Odate DATE,
+Cnum INT(4),
+Snum INT(4),
+prev int(4),
+foreign key(prev) references Cityorders(Onum)
+);
+
+                                    Assignment-19
+
+
+create view view_cus_rating
+as
+select * from customers
+where rating = 
+(select max(rating) from customers);
+select * from view_cus_rating;
+
+
+
+create view scity_view
+as
+select scity, count(scity) from salespeople
+group by scity;
+
+
+
+
+
+select  sname,avg(onum) as 'avg',count(onum) as 'total orders'
+from salespeople,orders
+where salespeople.snum = orders.Snum
+group by sname;
+
+
+
+create view view_multiple1
+as
+select cname,customers.snum,salespeople.sname
+from customers,salespeople
+where salespeople.snum = customers.Snum
+group by customers.snum,sname
+having count(*) > 1;
